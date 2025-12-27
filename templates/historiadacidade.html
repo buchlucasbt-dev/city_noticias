@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <title>História da Cidade de Auréola</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="box--nav">
+                <div class="header--text">
+                    <h1>City Notícias – Auréola</h1>
+                </div>
+                <button class="btnMN"><i class="fas fa-bars menu-icon" id="menuToggle"></i></button>
+                <nav id="bar">
+                    <ul>
+                        <a href="/"><li>Início</li></a>
+                        <a href="/cmc_comunicados"><li>Comunicados</li></a>
+                        <a href="/cmc_eventos"><li>Eventos</li></a>
+                        <a href="sobre_nos"><li>Sobre Nós</li></a>
+                        <a href="/historia"><li>História</li></a>
+                        <a href="/contatos"><li><button>Contacte-nos</button></li></a>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main id="main--his">
+        <div style="height: 96%; background-color: #00558877;" class="container">
+            <br><br>
+            <h1>A História e o Brilho de Auréola</h1>
+            <a href="/comunicados&eventos">
+                <button>Notícias e Destaques</button>
+            </a>
+        </div>
+    </main>
+
+    <section>
+        <div style="display: flex;" class="container">
+            <div class="bx--barra"></div>
+            <div class="box--history">
+                <div class="box--img--history">
+                    <img src="{{url_for('static', filename='dadosCAC/banco_cidade.png')}}" />
+                </div>
+
+                <div class="box--content--history">
+                    <h2>As Origens de Auréola</h2>
+                    <h3>Fundação e Crescimento</h3>
+
+                    <p>
+                        Auréola nasceu como um centro de encontro, planeada para unir comércio, cultura e mobilidade.
+                        Desde os seus primeiros anos, destacou-se pela sua organização urbana e pela visão
+                        estratégica dos seus fundadores.
+                    </p>
+
+                    <p>
+                        Ao longo do tempo, a cidade atraiu famílias, empreendedores e instituições,
+                        consolidando-se como um espaço de convivência harmoniosa, desenvolvimento sustentável
+                        e oportunidades para todos.
+                    </p>
+
+                    <p>
+                        O seu crescimento foi guiado pelo respeito à natureza, pela valorização cultural
+                        e pelo investimento contínuo em infraestruturas modernas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div style="display: flex;" class="container">
+            <div class="bx--barra"></div>
+            <div class="box--history">
+                <div class="box--img--history">
+                    <img src="{{url_for('static', filename='dadosCAC/praca_cidade.png')}}" />
+                </div>
+
+                <div class="box--content--history">
+                    <h2>Desenvolvimento e Qualidade de Vida</h2>
+
+                    <p>
+                        Hoje, Auréola é reconhecida como uma cidade moderna, acolhedora e vibrante.
+                        O planeamento urbano eficiente e os investimentos estratégicos tornaram-na
+                        uma referência em qualidade de vida e inovação.
+                    </p>
+
+                    <p>Algumas das conquistas mais relevantes da cidade incluem:</p>
+
+                    <ul>
+                        <li>Infraestruturas urbanas modernas e bem conservadas.</li>
+                        <li>Projetos de saneamento e mobilidade que beneficiam toda a população.</li>
+                        <li>Espaços públicos organizados, limpos e acessíveis.</li>
+                        <li>Incentivo à cultura, ao desporto e às iniciativas comunitárias.</li>
+                        <li>Criação desta plataforma digital para aproximar cidadãos e administração.</li>
+                    </ul>
+
+                    <p>
+                        Auréola continua a investir no futuro, promovendo uma cidade mais inteligente,
+                        sustentável e conectada.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sc-and">
+        <div class="container">
+            <h2>Conheça Auréola em um só lugar</h2>
+            <h4>Portal oficial de notícias, eventos e comunicados</h4>
+
+            <div class="box--and--main">
+                <div class="box--left">
+                    <div>
+                        <p>Redes Sociais</p>
+                        <div>
+                            <a href="#"><img src="{{url_for('static', filename='images/logos/facebook.png')}}"/></a>
+                            <a href="#"><img src="{{url_for('static', filename='images/logos/whatsapp.png')}}"/></a>
+                            <a href="#"><img src="{{url_for('static', filename='images/logos/gmail.png')}}"/></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box--right">
+                    <div>
+                        <p>Contactos</p>
+                        <div>
+                            <ul>
+                                <li>+000 000 000 000</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a style="color: #288;" href="/politicas">Políticas e Termos de Uso</a>
+            <h4>Plataforma Digital para uma Cidade em Evolução</h4>
+        </div>
+    </section>
+
+    <footer>© 2025 | Plataforma desenvolvida por Buch Software Technology</footer>
+
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+</body>
+</html>

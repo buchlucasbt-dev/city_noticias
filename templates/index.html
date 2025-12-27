@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Noticias BST</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="box--nav">
+
+                
+                <div class="header--text">
+
+                    <h1>City Noticias</h1>
+                </div>
+                <button class="btn-theme" onclick="toggleDarkMode()" title="Modo escuro / claro">
+  <i class="fas fa-moon"></i>
+</button>
+
+                <button class="btnMN"><i class="fas fa-bars menu-icon" id="menuToggle"></i></button>
+                <nav id="bar">
+                    <ul>
+                        <a href="/"><li>Inicio</li></a>
+                        <a href="/cmc_comunicados"><li>Comunicados</li></a>
+                        <a href="/cmc_eventos"><li>Eventos</li></a>
+                        <a href="sobre_nos"><li>Sobre Nôs</li></a>
+                        <a href="/historia"><li>História</li></a>
+                        <a href="/contatos"><li><button>Contate Nôs</button></li></a>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </header>
+    <main id="main_p">
+        <div class="container">
+            <div class="box--main">
+
+            
+                <div class="main--text">
+
+                    
+                    <h3> Conheça Nossa Cidade do Amor e da Prosperidade</h3>
+
+                    
+                    <a href="/contatos">
+                <button>Compartilhe sua ideia para melhorar a Cidade!</button></a>
+                </div>
+
+                <button class="box--style--main"
+                >Adimistrador do Site: Oslandio Castro</button>
+                
+            </div>
+        </div>
+
+    </main>
+
+    
+    <section class="">
+        <div  class="container">
+
+             <div style="margin-bottom: 20px; text-align: center; display:flex;align-items: center;">
+        <h3 style="margin: 15px auto; text-align: center;" >Inventos Municipais </h3>
+        
+        <hr  style="width: 50%; text-align:center; height: 6px; background-color: orange; border: none; border-radius: 2px;">
+        </div>
+            <div class="main--box--card">
+
+               
+
+               {{pEvent | safe}}
+               
+               <a href="/cmc_eventos">
+                 <button>VER MAIS EVENTOS</button></a>
+            </div>
+        </div>
+
+    </section>
+    <section class="sc--comunic">
+
+        <div class="container">
+        <div style="margin-bottom: 20px; text-align: center; display: flex; flex-direction: colunm; align-items: center;">
+        <h3 style="margin: 15px auto; text-align: center;" >Comunicados & Noticias Locais </h3>
+        
+        <hr  style="width: 50%; text-align:center; height: 6px; background-color: orange; border: none; border-radius: 2px;">
+        </div>
+            <div class="main--comunic">
+
+                 {{pComunic | safe}}
+                 <a href="/cmc_comunicados">
+                 <button>VER MAIS COMUNICADOS</button></a>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section>
+        <div style="display: flex;" class="container">
+            <div class="bx--barra"></div>
+            <div class="box--history">
+                <div class="box--img--history">
+                    <img src="{{url_for('static', filename='dadosCAC/antesdepos.png')}}" />
+
+                </div>
+                <div class="box--content--history">
+                    <h3>A História da Nossa Cidade</h3>
+                    <P>Viaje no tempo e explore os marcos históricos que fizeram da nossa cidade de referência em nosso Pais
+                    </P>
+                    <p>Desde as suas origens até os dias atuais.</p>
+
+                </div>
+                <a href="/historia">
+                <button>
+                    Ler sobre Nossa Cidade
+                </button></a>
+            </div>
+        </div>
+    </section>
+<section>
+	<div style="padding: 10px 2%; text-align: center;" class="pdt">
+    <h4>Feitos Do  Nosso Municipeo</h4>
+<div class="scroll-wrapper">
+	
+  <button class="scroll-btn left-btn" onclick="scrollLeft()">◀</button>
+  <div class="scroll-container" id="myScroll">
+    {{pFCAC | safe}}
+    
+  </div>
+  
+  
+  
+  <button class="scroll-btn right-btn" onclick="scrollRight()">▶</button>
+</div>
+</div>
+<section>
+
+    <section>
+        <div class="container">
+            <div class="box--contate">
+                <h3>Entre em contato pelo e-mail</h3>
+                <p id="notfyText"> </p>
+                <div>
+                    <input type="email" id="inEmailH" placeholder="ex: bsoft@gmail.com" required>
+                    <button id="btnProceguirContate">Proceguir</button>
+                    <a href="/contatos"><button>Outra Forma</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+
+<section class="sc-and">
+    <div style="" class="container">
+        <h2>Conheça a sua cidade em um só lugar</h2>
+        <h4>Plataforma de notícias e comunicados oficiais</h4>
+
+        <div class="box--and--main">
+
+            <div class="box--left">
+                <div>
+                    <p>Redes Sociais</p>
+                    <div>
+                        <a href="#"><img src="{{url_for('static', filename='images/logos/facebook.png')}}"/></a>
+                        <a href="#"><img src="{{url_for('static', filename='images/logos/whatsapp.png')}}"/></a>
+                        <a href="#"><img src="{{url_for('static', filename='images/logos/gmail.png')}}"/></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box--right">
+                <div>
+                    <p>Contactos</p>
+                    <div>
+                        <ul>
+                            <li>
+                                +258 000 000 000
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <a style="color: #288;" href="/politicas">Políticas e Termos de Uso</a>
+        <h4>Portal Digital de Notícias, Eventos e Comunicados</h4>
+    </div>
+</section>
+
+<footer>© 2025 | Plataforma desenvolvida por Buch Software Technology</footer>
+
+    <script src="{{url_for('static', filename='js/main.js')}}">
+    
+    </script>
+    
+    
+    
+    
+</body>
+</html>

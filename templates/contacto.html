@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <title>Contatos</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="box--nav">
+
+                
+                <div class="header--text">
+
+                    <h1>Meet Auréola</h1>
+                </div>
+                <button class="btnMN"><i class="fas fa-bars menu-icon" id="menuToggle"></i></button>
+                <nav id="bar">
+                    <ul>
+                        <a href="/"><li>Inicio</li></a>
+                        <a href="/cmc_comunicados"><li>Comunicados</li></a>
+                        <a href="/cmc_eventos"><li>Eventos</li></a>
+                        <a href="sobre_nos"><li>Sobre Nôs</li></a>
+                        <a href="/historia"><li>História</li></a>
+                        <a href="/contatos"><li><button>Contate Nôs</button></li></a>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </header>
+    <main id="main--cont">
+        <div class="container">
+            <div class="box--social--contactes">
+                <a href="https://www.facebook.com/cmchimoio"><button><img src="{{url_for('static', filename='images/logos/facebook.png')}}" alt="img_facebook"/><p>Contate nôs pelo Facebook</p></button></a>
+                <a href="/"><button><img src="{{url_for('static', filename='images/logos/whatsapp.png')}}" alt="img_whatsapp"/><p>Cobtate nos pelo Whatdapp</p>
+                   </button></a>
+
+            </div>
+        </div>
+
+    </main>
+    <section>
+    
+    
+    
+    	
+        <div class="container">
+            <div class="box--contate">
+                <h3>Entre em contato pelo e-mail</h3>
+                <form method="post" action="/contatos">
+                    <input name="nomeusr" placeholder="Seu Nome Completo">
+                    <input name="emailusr" type="email" value="{{dataemail or ''}}" placeholder="Seu E-mail">
+                    <input name="tellusr" type="tel" placeholder="Contato"><br>
+                    
+                    <textarea name="msgusr" placeholder="projectos , sujestões, etc __ Oque desejar..."></textarea><br>
+                    <button>Enviar Mensagem</button>
+                    
+                </form>
+            </div>
+        </div>
+    
+    </section>
+
+
+<section class="sc-and">
+    <div class="container">
+        <h2>Conheça Auréola em um só lugar</h2>
+        <h4>Plataforma de notícias, eventos e comunicados</h4>
+
+        <div class="box--and--main">
+            <div class="box--left">
+                <div>
+                    <p>Redes Sociais</p>
+                    <div>
+                        <a href="#"><img src="{{url_for('static', filename='images/logos/facebook.png')}}"/></a>
+                        <a href="#"><img src="{{url_for('static', filename='images/logos/whatsapp.png')}}"/></a>
+                        <a href="#"><img src="{{url_for('static', filename='images/logos/gmail.png')}}"/></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box--right">
+                <div>
+                    <p>Contactos</p>
+                    <div>
+                        <ul>
+                            <li>+000 000 000 000</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a style="color: #288;" href="/politicas">Políticas e Termos de Uso</a>
+        <h4>Portal Digital para uma Cidade em Evolução</h4>
+    </div>
+</section>
+
+<footer>© 2025 | Plataforma desenvolvida por Buch Software Technology</footer>
+
+
+
+	<div id="popSend">
+		<div class="popupBoxSend">
+			<img src="static/images/logos/calendar_plus.png" />
+			<h3>{{msgSend}}</h3>
+			<button onclick="fdismissmsg()" type="button" id="tnDismisspopMSG">Fechar</button>
+		
+		</div>
+	
+	</div>
+	
+	{% if msgSend %}
+    		
+    		<script>
+    		
+    			//alert("{{msgSend}}");
+    			
+    			document.getElementById("popSend").style.display = "flex";
+    		
+    		
+    		</script>
+    	{% else %}
+    		<p></a>
+    	{% endif %}
+    <script>
+    	function fdismissmsg(){
+    		document.getElementById("popSend").style.display = "none";
+    	
+    	}
+    </script>
+    <script src="{{url_for('static', filename='js/main.js')}}">
+        </script>
+</body>
+</html>

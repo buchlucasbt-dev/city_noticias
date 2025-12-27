@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Noticias</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styledash.css')}}">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="box--nav">
+
+                
+                <div class="header--text">
+
+                    <h1>City Noticias</h1>
+                </div>
+                <button class="btn-theme" onclick="toggleDarkMode()" title="Modo escuro / claro">
+  <i class="fas fa-moon"></i>
+</button>
+                <button onclick="showDash()">DASHBOARD</button>
+                
+            </div>
+        </div>
+
+    </header>
+    <main id="m-dash">
+        <div class="container">
+
+            <div class="main--box--card">
+
+               
+
+                <div class="box--card fade-in card--dh">
+
+                    <h3>
+                        Numero de Comunicados
+
+                    </h3>
+                    <br>
+                    <h1 id="nC">{{nComu}}</h1>
+                        <p></p>
+
+                </div>
+                <div class="box--card fade-in card--dh">
+
+                    <h3>
+                        Numero de Eventos
+
+                    </h3>
+                    <br>
+                    <h1 id="nEv" >{{nEvent}}</h1>
+                        <p></p>
+                   
+                </div>
+                <div class="box--card fade-in card--dh">
+                    <h3>
+                        Publicacoes Municipapis
+
+                    </h3>
+                    <br>
+                    <p>Visiveis: {{plVisi}}</p>
+                    <p>Invisiveis: {{plInvi}}</p>
+                    <p>Total: {{plTotal}}</p>
+
+                   
+                       
+
+                </div>
+                
+                <div  onclick="showMsg()" id="btnMsg" class="box--card fade-in card--dh">
+
+                    <h3>
+                        VER MENSAMGENS
+
+                    </h3>
+                    <br>
+                    <h1 id="nM">{{nMsg or '0'}}</h1>
+                        <p id="nMN">{{numNewMsg}} novas mensanges</p>
+                   
+                </div>
+            </div>
+
+            <div class="box--add--content">
+                <div onclick="showCommitEve()" class="box--add fade-in" >
+                    <div class="head--add">
+                        <img src="{{url_for('static',filename='images/logos/calendar_plus.png')}}" alt="add--event" />
+                    </div>
+                    <div class="content--add">
+
+                        <h3>Adicionar novo Evento</h3>
+
+                    </div>
+                </div>
+
+            
+                <div onclick="showCommitComu()" class="box--add fade-in">
+                    <div class="head--add">
+                        <img src="{{url_for('static', filename='images/logos/phone_plus.png')}}" alt="add--event" />
+                    </div>
+                    <div class="content--add">
+
+                        <h3>Adicionar novo Comunicado</h3>
+
+                    </div>
+                </div>
+
+				<!--div class="card card-grafico"-->
+				<div class="card">
+    <h3>Visitantes Únicos</h3>
+    <canvas id="graficoUnicos"></canvas>
+</div>
+
+<div class="card">
+    <h3>Total de Visitas</h3>
+    <canvas id="graficoTotal"></canvas>
+</div>
+
+
+                <button class="fade-in" onclick="showEve()">Ver todos Eventos</button>
+                <button class="fade-in" onclick="showComu()">Ver todos Comunicados</button>
+            </div>
+            
+        </div>
+
+    </main>
+
+    <br>
+    
+    <section id="sc_commit_eve"  class="sc--edit--comunic">
+
+        <div class="container">
+
+            <div class="main--box--edit--communic">
+                 <div class="mbox--edit">
+                    <div class="mbox--header">
+
+                        <img src="{{url_for('static', filename='images/logos/plus_img.png')}}" />
+                        <input id="inEvImage" type="file" accept="images">
+
+                    </div>
+                    <div class="mbox--content">
+                    <div class="chk">
+  <input id="check--feito--cmc--ev" type="checkbox" />
+  <div class="box" aria-hidden="true">
+    <!-- SVG do check (traçado simples) -->
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4 12.5 L9.2 17 L20 6"></path>
+    </svg>
+  </div>
+  <label for="check--feito--cmc--ev">Marcar como Feito do CAC</label>
+</div>
+                        <input id="inEvTitulo" type="text" placeholder="Titulo do Evento">
+                        <input id="inEvData" type="text" placeholder="data de realizacao"  value="{{dataAg}}"    readonly>
+                        <textarea id="inEvDetalhe" placeholder="detalhes"></textarea>
+                        <button  id="loadCommitBtnEv">Publicar Evento</button>
+
+
+
+                    </div>
+                 </div>
+            </div>
+            
+        </div>
+
+
+    </section>
+
+    
+	 
+
+    <section id="sc_commit_comu" class="sc--edit--comunic">
+
+        <div class="container">
+
+            <div class="main--box--edit--communic">
+                 <div class="mbox--edit">
+                    <div class="mbox--header">
+
+                        <img for="inCmImage" src="{{url_for('static', filename='images/logos/plus_img.png')}}">
+                        <input id="inCmImage" type="file" accept="image/*">
+
+                    </div>
+                    <div class="mbox--content">
+                    <div class="chk">
+  <input id="check--feito--cmc--cm" type="checkbox" />
+  <div class="box" aria-hidden="true">
+    <!-- SVG do check (traçado simples) -->
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4 12.5 L9.2 17 L20 6"></path>
+    </svg>
+  </div>
+  <label for="check--feito--cmc--cm">Marcar como Feito do CAC</label>
+</div>
+                    
+                    
+                        <input id="inCmTitulo" type="text" placeholder="Titulo do Comunicado">
+                        <input id="inCmData" type="text" placeholder="data de publicacao" value="{{dataAg}}" readonly>
+                        <textarea id="inCmDetalhe" placeholder="detalhes do comunicado"></textarea>
+                        <button id="loadCommitBtn"	>Enuciar Comunicado</button>
+
+                        
+
+                    </div>
+                 </div>
+            </div>
+            
+        </div>
+
+
+    </section>
+    
+    
+    <section id="sc_msg_cmc" class="sc--mhcard">
+        <div id="ctk--card" class="container">
+        <br>
+        
+
+            <h3>Mensamgens dos Municipes</h3>
+            <div class="main--box--card">
+
+               {{pMsg | safe}}
+               
+            </div>
+        </div>
+
+    </section>
+    
+
+     <section id="sc_event_cmc" class="sc--mhcard">
+        <div id="ctk--card" class="container">
+
+            <h3>Inventos Municipais</h3>
+            <div class="main--box--card">
+
+               {{pEvent | safe}}
+
+               
+            </div>
+        </div>
+
+    </section>
+    <section id="sc_comunic_cmc" class="sc--chomunic">
+
+        <div class="container">
+            <div class="main--comunic">
+
+                {{pComunic | safe}}
+
+
+                
+            </div>
+        </div>
+
+
+    </section>
+
+    <a href="/admin/logout" >
+    <button>
+    
+    sair
+    </button>
+    </a>
+    
+    
+    <footer>© 2025 | Uma solução criada por BSoft Tecnology</footer>
+
+
+	<!--alert div -->
+    
+    <div id="main-p-dl" class="main--pop-dl">
+    <div class="pop-dl">
+    <h3 id="titlepopdel">Pedindo Comfirmação</h3>
+    <div class="box-content-pop">
+    <p id="maintextpopinfodell">Prentende eliminar este <b id="nomedltext"></b>?</p>
+    <small id="poptypeInfo"></small> <small>N°:</small> <small id="popnumInfo"></small>
+    </div>
+    <div>
+    <button id="btnDismissDel">Cancelar</button>
+    <button id="btndlcfm" class="btndl">Sim</button>
+    </div>
+    </div>
+    
+    </div>
+    
+    
+    
+    
+    <!--alert 2 -->
+    
+    <div id="main-p-dl-msg" class="main--pop-dl-msg">
+    <div class="pop-dl">
+    <h3 id="titlepopdelmsg">Pedindo Comfirmação</h3>
+    <div class="box-content-pop">
+    <p id="maintextpopinfodellmsg">Prentende eliminar este <b id="nomedltextmsg"></b>?</p>
+    <small id="poptypeInfoMsg"></small> <small>N°:</small> <small id="popnumInfoMsg"></small>
+    </div>
+    <div>
+    <button id="btnDismissDelMsg">Cancelar</button>
+    <button id="btndlcfmmsg" class="btndlmsg">Sim</button>
+    </div>
+    </div>
+    
+    </div>
+    
+     <!--alert 3 visible -->
+    
+    <div id="main-p-vsi" class="main--pop-vsi">
+    <div class="pop-vsi">
+    <h3 id="titlepopvsi">Pedindo Comfirmação</h3>
+    <div class="box-content-pop">
+    <p id="maintextpopinfovsi">Prentende esconder este <b id="nomevsitext"></b>?</p>
+    <small id="poptypeInfoVsi"></small> <small>N°:</small> <small id="popnumInfoVsi"></small>
+    </div>
+    <div>
+    <button id="btnDismissVsi">Cancelar</button>
+    <button id="btncfmvsi" class="btnvsi">Sim</button>
+    </div>
+    </div>
+    
+    </div>
+    
+    
+
+
+
+<script src="/static/js/weekChart.js"></script>
+<script src="/static/js/weekChart2.js"></script>
+
+
+	<script src="{{url_for('static', filename='js/maindh.js')}}">
+	</script>
+
+    <script src="{{url_for('static', filename='js/main.js')}}">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/static/js/weekChart.js"></script>
+
+<script>
+criarGraficoSemanal({
+    canvasId: 'graficoUnicos',
+    endpoint: '/stats/week/unicos',
+    label: 'Visitantes Únicos'
+});
+
+criarGraficoSemanal({
+    canvasId: 'graficoTotal',
+    endpoint: '/stats/week/total',
+    label: 'Total de Visitas'
+});
+</script>
+
+    
+</body>
+</html>

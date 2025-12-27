@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+</head>
+<body>
+
+    <header id="head-ev">
+        <div class="container">
+            <div class="box--nav">
+
+                
+                <div class="header--text">
+
+                    <h1>City Noticias</h1>
+                </div>
+                <button class="btnMN"><i class="fas fa-bars menu-icon" id="menuToggle"></i></button>
+                <nav id="bar">
+                    <ul>
+                        <a href="/"><li>Inicio</li></a>
+                        <a href="/cmc_comunicados"><li>Comunicados</li></a>
+                        <a href="/cmc_eventos"><li>Eventos</li></a>
+                        <a href="sobre_nos"><li>Sobre Nôs</li></a>
+                        <a href="/historia"><li>História</li></a>
+                        <a href="/contatos"><li><button>Contate Nôs</button></li></a>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </header>
+    <main id="main--m2">
+        <div class="container">
+       
+            <div class="box--card--main">
+                
+                <h4>
+                    Evento  mais recente.
+                </h4>
+                <h3>{{infoNewCm[0]}}</h3>
+
+                
+                
+                <div class="bx-content-main" >
+                <img style="" src="{{infoNewCm[3]}}" alt="dadi" />
+                    <p>{{infoNewCm[4]}}
+                    </p>
+                    
+                    
+                </div>
+               
+
+            </div>
+             <div class="form-search">
+        	<input id="inPesqEv" type="search" placeholder="pesquisar eventos...">
+        	<button  id="btnSearchEv" type="button">🔍</button>
+        </div>
+        </div>
+    </main>
+    
+    
+
+
+    <section >
+        <div class="container">
+
+            <div style="margin-bottom: 20px; text-align: center; display:flex;align-items: center;">
+        <h3 style="margin: 15px auto; text-align: center;" >Inventos Municipais </h3>
+        
+        <hr  style="width: 50%; text-align:center; height: 6px; background-color: orange; border: none; border-radius: 2px;">
+        </div>
+            <div id="mainBCardEv" class="main--box--card">
+
+               
+
+                {{pEvent | safe}}
+                
+            </div>
+        </div>
+
+    </section>
+    <section><div class="container">...	<h3 id="loader">Carregando Mais</h3>
+    
+    <button>VER TODOS EVENTOS</button></div>
+    </section>
+    
+  
+   <section class="sc-and">
+    <div style="" class="container">
+        <h2>Conheça a sua cidade em um só lugar</h2>
+        <h4>Plataforma de notícias e comunicados oficiais</h4>
+
+        <div class="box--and--main">
+
+            <div class="box--left">
+                <div>
+                    <p>Redes Sociais</p>
+                    <div>
+                        <a href="#"><img src="{{url_for('static', filename='images/logos/facebook.png')}}"/></a>
+                        <a href="#"><img src="{{url_for('static', filename='images/logos/whatsapp.png')}}"/></a>
+                        <a href="#"><img src="{{url_for('static', filename='images/logos/gmail.png')}}"/></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box--right">
+                <div>
+                    <p>Contactos</p>
+                    <div>
+                        <ul>
+                            <li>
+                                +258 000 000 000
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <a style="color: #288;" href="/politicas">Políticas e Termos de Uso</a>
+        <h4>Portal Digital de Notícias, Eventos e Comunicados</h4>
+    </div>
+</section>
+
+<footer>© 2025 | Plataforma desenvolvida por Buch Software Technology</footer>
+
+
+    <section  id="sc--communic">
+        <div class="container">
+            <button  onclick="dismissCommunic()">FECHAR</button>
+            <div class="box--comunic--pop">
+                <div class="comunic--head">
+
+                    <img src="{{url_for('static', filename='images/comunicados/mcimoio.png')}}" alt="imgcominic" />
+                    
+                </div>
+                <div class="comunic--content">
+                    <div class="cmnc--title">
+
+                        <h2>Comunicados de Chuvas Fortes</h2>
+                    </div>
+                    <div class="cmnc--title">
+                        <p>Temos Previsao de Chuva Fortes 
+                            nos proximos dias cheque as suas casas se estaao seguras
+                        </p>
+
+                        <p>Temos Previsao de Chuva Fortes 
+                            nos proximos dias cheque as suas casas se estaao seguras
+                        </p>
+                        <p>Temos Previsao de Chuva Fortes 
+                            nos proximos dias cheque as suas casas se estaao seguras
+                            Temos Previsao de Chuva Fortes 
+                            nos proximos dias cheque as suas casas se estaao seguras
+                            Temos Previsao de Chuva Fortes 
+                            nos proximos dias cheque as suas casas se estaao seguras
+                            Temos Previsao de Chuva Fortes 
+                            nos proximos dias cheque as suas casas se estaao seguras
+                        </p>
+                    </div>
+                    
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+<section id="sc--eventos">
+        <div class="container">
+            <button onclick="dismissEvent()" >FECHAR</button>
+            <div class="box--card--pop">
+
+                <img id="sc--img--ev" src="{{url_for('static', filename='images/Maputo-Mozambique.webp')}}" />
+
+                <h3 id="sc--title--ev">
+                    DIA 24 de Setembro
+
+                </h3>
+                <br>
+                    <p id="sc--content--ev">dia da luta armada esta reservado
+                        uma festa na praca da independencia
+                    </p>
+               
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <script src="{{url_for('static', filename='js/main.js')}}">
+    </script>
+    
+    <script>
+    </script>
+    
+    
+    <script src="{{url_for('static', filename='js/jssearch.js')}}">
+    
+    </script>
+    
+     <script src="{{url_for('static', filename='js/jsshowinfo.js')}}">
+    
+    </script>
+
+</body>
+</html>
