@@ -3,3 +3,4 @@ requests>=2.28
 PyJWT>=2.8
 cloudinary>=1.36
 google-auth>=2.20
+gunicorn
