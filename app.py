@@ -2664,4 +2664,4 @@ def gerar_stats_semanais(tipo):
         "data": valores
     })
 
-app.run(debug="True")
+#app.run(debug="True")
